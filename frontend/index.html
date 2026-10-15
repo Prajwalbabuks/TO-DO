@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <meta name="description" content="A calm, simple place to keep track of what needs doing." />
+    <title>Today — Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Today home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>daymark</span>
+        </a>
+
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="nav-list">
+          <button class="nav-item is-active" type="button" data-filter="all" aria-current="page">
+            <span class="nav-icon icon-inbox" aria-hidden="true"></span><span>All tasks</span><span class="nav-count" id="all-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="active">
+            <span class="nav-icon icon-sun" aria-hidden="true"></span><span>To do</span><span class="nav-count" id="active-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="completed">
+            <span class="nav-icon icon-check" aria-hidden="true"></span><span>Completed</span><span class="nav-count" id="completed-count">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="note-spark" aria-hidden="true">✳</span>
+            <p>Small steps add up.<br /><strong>Keep moving forward.</strong></p>
+          </div>
+          <div class="profile">
+            <div class="avatar" aria-hidden="true">PB</div>
+            <div class="profile-copy"><strong>Your space</strong><span>Personal workspace</span></div>
+            <span class="profile-dots" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="home">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong>My tasks</strong></div>
+          <div class="topbar-right"><span class="today-label" id="today-label"></span><span class="topbar-avatar" aria-label="Your profile">Y</span></div>
+        </header>
+
+        <section class="content-wrap" aria-labelledby="page-title">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow" id="greeting">A FRESH START</p>
+              <h1 id="page-title">Your day, <span>your pace.</span></h1>
+              <p class="page-subtitle">A little progress is still progress. What’s on your mind?</p>
+            </div>
+            <div class="progress-card" aria-label="Daily completion progress">
+              <div class="progress-ring" id="progress-ring" style="--progress: 0deg"><span id="progress-percent">0%</span></div>
+              <div><strong id="progress-title">Getting started</strong><span id="progress-caption">Your day is yours to shape</span></div>
+            </div>
+          </div>
+
+          <form class="task-composer" id="task-form">
+            <span class="composer-plus" aria-hidden="true">+</span>
+            <label class="visually-hidden" for="task-input">Add a task</label>
+            <input id="task-input" name="title" type="text" maxlength="100" placeholder="Add a task to your list…" autocomplete="off" required />
+            <span class="composer-hint">Press <kbd>Enter</kbd> to add</span>
+            <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+          </form>
+
+          <div class="list-toolbar">
+            <div class="list-heading"><h2 id="list-title">All tasks</h2><span class="task-total" id="visible-count">0</span></div>
+            <div class="toolbar-actions">
+              <label class="search-box"><span class="search-icon" aria-hidden="true"></span><span class="visually-hidden">Search tasks</span><input id="search-input" type="search" placeholder="Search tasks" autocomplete="off" /></label>
+              <button class="sort-button" id="sort-button" type="button" aria-label="Change task order"><span class="sort-icon" aria-hidden="true">↕</span><span id="sort-label">Newest first</span></button>
+            </div>
+          </div>
+
+          <div class="task-list" id="task-list" aria-live="polite" aria-busy="true"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <div class="empty-illustration" aria-hidden="true"><span class="empty-sun">✳</span><span class="empty-check">✓</span></div>
+            <h3 id="empty-title">A clear page.</h3>
+            <p id="empty-copy">Add your first task above and make today count.</p>
+          </div>
+          <div class="list-footer" id="list-footer" hidden><span><span class="footer-check">✓</span> You’re doing great. Keep it up.</span><button id="clear-completed" type="button">Clear completed</button></div>
+          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+        </section>
+        <footer class="page-footer"><span>Made for a more mindful day.</span><span>One thing at a time <span aria-hidden="true">✦</span></span></footer>
+      </main>
+    </div>
+  </body>
+</html>
